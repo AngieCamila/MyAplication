@@ -16,8 +16,8 @@
                 <img style="height: 200px; width: 250px; margin: 20px;" src="{{ Storage::url($camila->imagen) }}" class="card-img-top mx-auto d-block" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{$camila['nombre']}}</h5>
-                    <p class="card-text">{{$camila->descripcion}}</p>
-                    <a href="#" class="btn btn-secondary">Ver más</a>
+                    {{--Se necesita el id para ver un registro en particular--}}
+                    <a href="/cursos/{{$camila->id}}" class="btn btn-secondary">Ver más</a>
                 </div>
             </div>
         </div>

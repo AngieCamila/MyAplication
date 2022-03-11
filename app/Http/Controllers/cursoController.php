@@ -60,14 +60,17 @@ class cursoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el recurso especificado (un recurso es un registro).
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        //Creo un array con información de registro del id que viajó en la solicitud
+        $cursito = curso::find($id);
+        //Asocio el array al view usando compact
+        return view('cursos.show', compact('cursito'));
     }
 
     /**

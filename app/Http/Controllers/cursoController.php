@@ -80,8 +80,11 @@ class cursoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
+
     {
-        //
+        $cursito = curso::find($id);
+        return view('cursos.edit', compact('cursito'));
+        //return $cursito;
     }
 
     /**
@@ -93,7 +96,15 @@ class cursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cursito = curso::find($id);
+        /* Con fill lleno los campos de la tabla cursos con la info que viene desde el request excepto lo que viene desde input llamado imagen
+         */
+        $cursito->fill($request->except('imagen'));
+        if ($request->hasFile('imagen')){
+            $cursito->imagen = $request->file('imagen')->store('public');
+        }
+        $cursito->save();
+        return 'Recurso Actualizado';
     }
 
     /**
